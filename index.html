@@ -26,7 +26,7 @@ footer{min-height:80px;border-top:1px solid #ffffff21;display:flex;align-items:c
 <script>
 window.addEventListener('DOMContentLoaded',()=>{
   const p=window.NFC_PROFILE||{},$=id=>document.getElementById(id),txt=(id,value)=>{if(value)$(id).textContent=value};
-  txt('name',p.fullName);txt('role',p.title);txt('company',p.company);txt('tagline',p.tagline);
+  txt('name',p.fullName);txt('role',p.title);$('role').hidden=!p.title;txt('company',p.company);txt('tagline',p.tagline);
   document.title=(p.fullName||'Digital Business Card')+' | Contact';
   $('initials').textContent=(p.fullName||'Your Name').trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();
   if(p.location){txt('location',p.location);$('location').hidden=false}
