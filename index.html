@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0e1218"><meta name="description" content="Professional digital business card — tap, scan, and connect.">
+<title>Digital Business Card · Connect</title>
+<style>
+:root{color-scheme:dark;--bg:#0e1218;--panel:#171d25;--blue:#78d0f8;--red:#f0525e;--text:#f5f8fb;--muted:#aab9c9;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse 60% 50% at 0% 0%,#142735 0%,transparent 100%),radial-gradient(ellipse 45% 40% at 100% 100%,#32191f 0%,transparent 100%),var(--bg);color:var(--text)}
+.shell{width:min(1080px,calc(100% - 40px));margin:auto}.top{height:96px;border-bottom:1px solid #ffffff21;display:flex;align-items:center;justify-content:space-between}.brand{font-size:14px;font-weight:850;letter-spacing:.19em}.brand b{color:var(--red)}.descriptor{font-size:10px;color:var(--muted);letter-spacing:.16em}.dot{display:inline-block;background:var(--blue);width:7px;height:7px;border-radius:50%;margin-right:8px}
+main{min-height:calc(100vh - 177px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);align-items:center;gap:65px;padding:72px 0}
+.avatar{width:94px;height:94px;display:grid;place-items:center;font-size:31px;font-weight:750;color:var(--blue);border:1px solid #466678;border-radius:24px;background:linear-gradient(135deg,#263947,#191d27)}
+.eyebrow{margin:32px 0 12px;color:var(--blue);font-size:11px;letter-spacing:.2em;font-weight:800}h1{font-size:clamp(51px,6vw,85px);line-height:1.02;letter-spacing:-.07em;margin:0;overflow-wrap:anywhere}.accent{width:99px;height:4px;margin:25px 0;background:linear-gradient(90deg,var(--blue) 0 77%,var(--red) 77%);border-radius:4px}
+.role{font-size:23px;margin:0 0 5px;font-weight:650}.company{font-size:16px;margin:0;color:#c8d3df}.tagline,.location{color:var(--muted);font-size:16px;line-height:1.6}.tagline{margin:23px 0 27px}.location{margin:10px 0}
+.actions{display:flex;flex-wrap:wrap;gap:10px}.action{display:inline-flex;align-items:center;justify-content:center;min-height:55px;border:1px solid #415160;border-radius:12px;background:#1c2630;color:white;text-decoration:none;padding:0 22px;font-size:14px;font-weight:750;cursor:pointer}.primary{background:var(--blue);border-color:var(--blue);color:#10212d}.action:hover{filter:brightness(1.12)}.message{font-size:12px;color:#f3acb2;line-height:1.6;margin-top:22px;max-width:500px}
+.panel{padding:27px;background:linear-gradient(145deg,#202a35,#151c25);border:1px solid #374352;border-radius:26px;box-shadow:0 28px 80px #0005;position:relative}.panel:before{content:"";position:absolute;top:0;left:27px;right:27px;height:3px;background:linear-gradient(90deg,var(--blue) 0 75%,var(--red) 75%)}
+.panelhead{display:flex;justify-content:space-between;color:#c1d0dc;font-weight:800;font-size:11px;letter-spacing:.17em;margin:3px 0 23px}.qrbox{background:white;border-radius:15px;padding:16px;width:min(100%,285px);margin:auto}.qrbox svg{display:block;width:100%;height:auto}.panel h2{font-size:25px;letter-spacing:-.035em;margin:26px 0 9px}.panel p{font-size:14px;color:var(--muted);line-height:1.65}.share{width:100%;margin-top:10px;background:transparent;border:1px solid #476276;color:var(--blue);border-radius:11px;min-height:47px;font-weight:750;cursor:pointer}.url{font-size:12px;word-break:break-all;color:var(--muted)}
+footer{min-height:80px;border-top:1px solid #ffffff21;display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.12em;color:#90a1b1}
+[hidden]{display:none!important}
+@media(max-width:850px){main{display:flex;flex-direction:column;align-items:stretch;gap:45px;padding:46px 0 65px}.panel{max-width:520px;width:100%;margin:auto}h1{font-size:clamp(48px,12vw,75px)}}@media(max-width:450px){.descriptor{font-size:8px}.brand{font-size:11px}.actions .action{flex:1}.actions .primary{flex:1 0 100%}.panel{padding:21px}footer{font-size:8px}}
+</style><script src="profile.js" defer></script></head>
+<body><div class="shell"><header class="top"><div class="brand">CONNECTION<b>.</b></div><div class="descriptor"><span class="dot"></span>DIGITAL BUSINESS CARD</div></header>
+<main><section><div class="avatar" id="initials">YN</div><p class="eyebrow">NICE TO MEET YOU</p><h1 id="name">Your Name</h1><div class="accent"></div><p id="role" class="role">Your Professional Title</p><p id="company" class="company">Your Organization</p><p id="location" class="location" hidden></p><p id="tagline" class="tagline">Let's connect.</p>
+<div class="actions"><button class="action primary" id="save" type="button">↓ &nbsp; Save contact</button><a class="action" id="email" hidden>✉ &nbsp; Email</a><a class="action" id="phone" hidden>☎ &nbsp; Call</a><a class="action" id="website" hidden target="_blank" rel="noopener noreferrer">↗ &nbsp; Website</a></div>
+<p id="message" class="message" hidden></p></section>
+<aside class="panel"><div class="panelhead"><span>01 / SHARE</span><span>↗</span></div><div class="qrbox"><svg id="qr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" role="img" aria-label="QR code to open this digital contact website"><rect width="37" height="37" fill="#fff"/><path id="qrpath" fill="#000"/></svg></div><h2>Make a connection.</h2><p>Scan this code, or tap the physical NFC card, to open the latest contact details.</p><button class="share" id="share" type="button">Share this card ↗</button><p class="url" id="link">brianrose25.github.io</p></aside>
+</main><footer><span>BUILT FOR REAL CONNECTIONS</span><span>SKY BLUE / RED EDITION</span></footer></div>
+<script>
+window.addEventListener('DOMContentLoaded',()=>{
+  const p=window.NFC_PROFILE||{},$=id=>document.getElementById(id),txt=(id,value)=>{if(value)$(id).textContent=value};
+  txt('name',p.fullName);txt('role',p.title);txt('company',p.company);txt('tagline',p.tagline);
+  document.title=(p.fullName||'Digital Business Card')+' | Contact';
+  $('initials').textContent=(p.fullName||'Your Name').trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+  if(p.location){txt('location',p.location);$('location').hidden=false}
+  const setLink=(id,href)=>{if(href){$(id).href=href;$(id).hidden=false}};
+  if(p.email)setLink('email','mailto:'+p.email);
+  if(p.phone)setLink('phone','tel:'+p.phone.replace(/[^+\d]/g,''));
+  if(p.website&&/^https?:\/\//.test(p.website))setLink('website',p.website);
+  const esc=v=>String(v||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/;/g,'\\;').replace(/,/g,'\\,');
+  $('save').onclick=()=>{
+    if(!p.fullName||p.fullName==='Your Name'||(!p.email&&!p.phone)){ $('message').textContent='Contact information is not configured yet. Update profile.js on GitHub first.';$('message').hidden=false;return; }
+    const parts=p.fullName.trim().split(/\s+/),last=parts.length>1?parts.pop():'',first=parts.join(' ');
+    const lines=['BEGIN:VCARD','VERSION:3.0','N:'+esc(last)+';'+esc(first)+';;;','FN:'+esc(p.fullName)];
+    if(p.title)lines.push('TITLE:'+esc(p.title));if(p.company)lines.push('ORG:'+esc(p.company));
+    if(p.phone)lines.push('TEL;TYPE=CELL:'+esc(p.phone));if(p.email)lines.push('EMAIL;TYPE=INTERNET:'+esc(p.email));
+    if(p.website)lines.push('URL:'+esc(p.website));lines.push('END:VCARD');
+    const b=new Blob([lines.join('\r\n')+'\r\n'],{type:'text/vcard;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u;a.download=p.fullName.toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.vcf';a.click();setTimeout(()=>URL.revokeObjectURL(u),5000);
+  };
+  $('share').onclick=async()=>{const url=p.shareUrl||location.href;try{if(navigator.share)await navigator.share({title:p.fullName,url});else if(navigator.clipboard){await navigator.clipboard.writeText(url);$('share').textContent='Link copied ✓'}else{prompt('Copy this link:',url)}}catch(e){}};
+  txt('link',(p.shareUrl||location.href).replace(/^https?:\/\//,''));
+  // Precomputed QR matrix for the permanent URL https://brianrose25.github.io/
+  // Each 10-character hexadecimal row represents 37 modules; the four outer modules are quiet zone.
+  const rows='0000000000,0000000000,0000000000,0000000000,01fc2927f0,01048ed410,017489c5d0,0174de45d0,01745dc5d0,0105bc2410,01fd5557f0,0000e4b000,012db20a00,00c266dc90,009fc13fe0,0062864c60,00c761bcb0,00e312a000,000df355f0,01db3dbfa0,00cf1fe820,002a929e90,0145d89830,0040fba230,013f951f40,00012b1170,01fcce5520,01054971f0,0174f79f20,01758725d0,01749029d0,010451fb20,01fdeedda0,0000000000,0000000000,0000000000,0000000000'.split(',');
+  let d='';rows.forEach((h,y)=>{const bits=BigInt('0x'+h);for(let x=0;x<37;x++)if((bits>>BigInt(36-x))&1n)d+='M'+x+' '+y+'h1v1h-1z';});$('qrpath').setAttribute('d',d);
+});
+</script></body></html>
